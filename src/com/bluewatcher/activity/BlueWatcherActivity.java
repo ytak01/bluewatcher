@@ -99,6 +99,11 @@ public class BlueWatcherActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_blue_watcher);
 
+		if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+			// 権限がない場合はリクエスト
+			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+		}
+
 		checkLicensing();
 		checkBleSupported();
 		
