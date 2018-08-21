@@ -45,8 +45,11 @@ public class WatchNotificationListener extends NotificationListenerService {
 		}
 		if (sbn.getNotification().tickerText != null)
 			notification.setTickerText(sbn.getNotification().tickerText.toString());
-		if (sbn.getNotification().contentIntent.getCreatorPackage() != null)
-			notification.setCreatorPackage(sbn.getNotification().contentIntent.getCreatorPackage());
+		android.app.Notification ntf = sbn.getNotification();
+		if (ntf.contentIntent != null) {
+			if (sbn.getNotification().contentIntent.getCreatorPackage() != null)
+				notification.setCreatorPackage(sbn.getNotification().contentIntent.getCreatorPackage());
+		}
 		return notification;
 	}
 }
