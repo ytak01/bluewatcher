@@ -1,0 +1,26 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '28.0.2'
+    defaultConfig {
+        applicationId "com.bluewatcher"
+        minSdkVersion 22
+        targetSdkVersion 25
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
+            debuggable true
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation project(':google_lvl')
+    implementation 'com.android.support:support-v4:25.4.0'
+}
